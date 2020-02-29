@@ -1,0 +1,33 @@
+body {
+	font-size: .9rem;
+	color: #6f6e6e;
+}
+body a {
+	color: #5d5b5b;
+	font-weight: bold;
+}
+body a:hover {
+	color: #5d5b5b;
+}
+h2 {
+	font-size: .85rem;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+#page_content {
+	margin-top: 2rem;
+}
+#frontpage-archive {
+	margin-top: 1rem;
+}
+#coverstory a {
+	font-size: 1.2rem;}
+#topstories {
+	padding-top: .5rem;
+}
+#topstories a {
+	font-size: 1rem;
+}
+#archive a {
+	font-size: 1rem;
+}
