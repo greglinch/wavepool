@@ -1,18 +1,18 @@
 body {
 	font-size: .9rem;
-	color: #6f6e6e;
 }
 body a {
-	color: #5d5b5b;
+	color: #000;
 	font-weight: bold;
 }
 body a:hover {
-	color: #5d5b5b;
+	color: #000;
 }
 h2 {
 	font-size: .85rem;
 	font-weight: bold;
 	text-transform: uppercase;
+	color: #868484;
 }
 #page_content {
 	margin-top: 2rem;
@@ -27,4 +27,25 @@ h2 {
 }
 #archive a {
 	font-size: 1rem;
+}
+#instructions {
+	color: #000;
+}
+#instructions ol {
+	padding: 0;
+}
+#instructions ol li.instructable {
+	padding-bottom: 1.5rem;
+}
+#instructions ol h1 {
+	font-size: 1.1rem;
+}
+#instructions ol h2 {
+	font-size: 1rem;
+	font-weight: normal;
+	text-transform: none;
+	color: #000;
+}
+#instructions ol h3{
+	font-size: .9rem;
 }

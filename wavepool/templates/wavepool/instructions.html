@@ -1,0 +1,24 @@
+{% extends 'wavepool/base.html' %}
+
+{% block page_content %}
+	<div id="instructions">
+		<div class="row">
+			<p>For each user story below, submit a pull request to this repository that completes the request. Make sure all acceptance criteria are met.</p>
+			<p>For each pull request, include instructions for the reviewer to verify the behavior as well as commentary about your solution.</p>
+		</div>
+		<ol>
+			{% for user_story in user_stories %}
+			<li class="instructable">
+				<h1>{{user_story.title}}</h1>
+				<h2>{{user_story.description}}</h2>
+				<h3>Acceptance Criteria:</h3>
+				<ul>
+				{% for ac in user_story.acceptancecriteria_set.all %}
+					<li>{{ac.ac}}</li>
+				{% endfor %}
+				</ul>
+			</li>
+			{% endfor %}
+		</ol>
+	</div>
+{% endblock %}

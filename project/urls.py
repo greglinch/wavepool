@@ -23,6 +23,7 @@ from wavepool import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.front_page, name='home'),
+    path('instructions', views.instructions, name='instructions'),
     path('news/', views.article, name='article')
 ]
 
