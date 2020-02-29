@@ -1,0 +1,11 @@
+{% extends 'wavepool/base.html' %}
+{% load static %}
+
+{% block page_content %}
+	<div class="row">
+		<h1>{{ article.title }}</h1>
+	</div>
+	<div class="row">
+		{{ article.body}}
+	</div>
+{% endblock %}

@@ -22,7 +22,8 @@ from wavepool import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.front_page),
+    path('', views.front_page, name='home'),
+    path('news/', views.article, name='article')
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

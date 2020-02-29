@@ -5,7 +5,7 @@
 	<div class="row">
 		<div class="col-md-4">
 			<div id="coverstory" class="row">
-				<div><a href="">{{ cover_story.title }}</a></div>
+				<div><a href="{% url 'article' %}">{{ cover_story.title }}</a></div>
 				<div><img src="media/image/placeholder-img.jpg"  width="350" height="200" /></div>
 				<div>{{ cover_story.teaser }} ...</div>
 			</div>
@@ -14,7 +14,7 @@
 			<div class="row"><h2>Top Stories</h2></div>
 			<div class="row">
 				{% for newspost in top_stories %}
-				<div><a href="">{{ newspost.title }}</a></div>
+				<div><a href="{% url 'article' %}">{{ newspost.title }}</a></div>
 				<div>{{ newspost.teaser }} ...
 				<hr /></div>
 
@@ -22,15 +22,18 @@
 			</div>
 		</div>
 	</div>
-	<div id="frontpage-archive" class="row">
-		<div id="archive-stories" class="container-table">
-			{% for newspost in archive %}
-				<div>
-					<div class="frontpage-archive_link"><a href="">{{ newspost.title }}</a></div>
-					<div>{{ newspost.teaser }} ...</div>
-				</div>
-				<hr />
-			{% endfor %}
+	<div id="frontpage-archive">
+		<div class="row"><h2>Archive</h2></div>
+		<div class="row">
+			<div id="archive-stories">
+				{% for newspost in archive %}
+					<div>
+						<div class="frontpage-archive_link"><a href="{% url 'article' %}">{{ newspost.title }}</a></div>
+						<div>{{ newspost.teaser }} ...</div>
+					</div>
+					<hr />
+				{% endfor %}
+			</div>
 		</div>
 	</div>
 {% endblock %}
