@@ -7,7 +7,7 @@
 			<div id="coverstory" class="row" data-story-id="{{cover_story.pk}}">
 				<div><a href="{% url 'article' %}">{{ cover_story.title }}</a></div>
 				<div><img src="media/image/placeholder-img.jpg"  width="350" height="200" /></div>
-				<div>{{ cover_story.teaser }} ...</div>
+				<div class="article-teaser" data-story_id="{{cover_story.pk}}">{{ cover_story.teaser }} ...</div>
 			</div>
 		</div>
 		<div id="topstories" class="col-md-8">
@@ -15,7 +15,7 @@
 			<div class="row">
 				{% for newspost in top_stories %}
 				<div class="topstory" data-story-id="{{newspost.pk}}" data-top-story-placement="{{forloop.counter}}"><a href="{% url 'article' %}">{{ newspost.title }}</a></div>
-				<div>{{ newspost.teaser }} ...
+				<div class="article-teaser" data-story_id="{{newspost.pk}}">{{ newspost.teaser }} ...
 					<hr />
 				</div>
 
@@ -30,7 +30,7 @@
 				{% for newspost in archive %}
 					<div class="archived-story" data-archive-story-id="{{newspost.pk}}">
 						<div class="frontpage-archive_link"><a href="{% url 'article' %}">{{ newspost.title }}</a></div>
-						<div>{{ newspost.teaser }} ...</div>
+						<div class="article-teaser" data-story_id="{{newspost.pk}}">{{ newspost.teaser }} ...</div>
 					</div>
 					<hr />
 				{% endfor %}

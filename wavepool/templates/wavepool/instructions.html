@@ -4,7 +4,9 @@
 	<div id="instructions">
 		<div class="row">
 			<h1>Instructions</h1>
-			<p>For each user story below, submit a pull request to this repository that completes the request, meeting as many of the acceptance criteria as you can. For each pull request, include instructions for the reviewer to verify the behavior as well as commentary about your solution.</p>
+			<p>For each user story below, submit a pull request to this repository that completes the request, meeting as many of the acceptance criteria as you can. For each acceptance criteria, a django test is noted which should pass if your solution is valid.<p>
+
+			</p>For each pull request, include instructions for the reviewer to verify the behavior as well as commentary about your solutions.</p>
 		</div>
 		<ol>
 			{% for user_story in user_stories %}
@@ -14,7 +16,7 @@
 				<h3>Acceptance Criteria:</h3>
 				<ul>
 				{% for ac in user_story.acceptancecriteria_set.all %}
-					<li>{{ac.ac}}</li>
+					<li class="instructable-ac">{{ac.ac|safe}}</li>
 				{% endfor %}
 				</ul>
 			</li>

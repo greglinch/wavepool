@@ -136,6 +136,13 @@ class FrontpageViewTest(TestBase):
             story_id = int(div['data-archive-story-id'])
             self.assertIn(story_id, [s.id for s in archive_stories])
 
+    def test_article_teaser_render(self):
+        front_page = self.client.get('')
+        front_page_html = BeautifulSoup(front_page.content, 'html.parser')
+        teaser_divs = front_page_html.find_all('div', {'class': 'article-teaser'})
+        for teaser in teaser_divs:
+            self.assertNotIn('<p>', teaser.text)
+
 
 class CmsTest(TestBase):
     fixtures = ['test_fixture', ]

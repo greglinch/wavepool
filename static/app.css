@@ -1,9 +1,51 @@
-.container-table {
+body {
+	font-size: .9rem;
 }
-.container-table_tr {
+body a {
+	color: #000;
+	font-weight: bold;
 }
-.container-table_td {
+body a:hover {
+	color: #000;
 }
-.container-table_td.front_page_link {
-	width: 40%;
+h2 {
+	font-size: .85rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #868484;
+}
+#page_content {
+	margin-top: 2rem;
+}
+#coverstory a {
+	font-size: 1.2rem;}
+#topstories {
+	padding-top: .5rem;
+}
+#topstories a {
+	font-size: 1rem;
+}
+#archive a {
+	font-size: 1rem;
+}
+#instructions {
+	color: #000;
+}
+#instructions ol {
+	padding: 0;
+}
+#instructions ol li.instructable {
+	padding-bottom: 1.5rem;
+}
+#instructions ol h1 {
+	font-size: 1.1rem;
+}
+#instructions ol h2 {
+	font-size: 1rem;
+	font-weight: normal;
+	text-transform: none;
+	color: #000;
+}
+#instructions ol h3{
+	font-size: .9rem;
 }
