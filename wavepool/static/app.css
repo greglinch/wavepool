@@ -1,5 +1,5 @@
 body {
-	font-size: .9rem;
+	font-size: 1rem;
 }
 body a {
 	color: #000;
@@ -9,25 +9,35 @@ body a:hover {
 	color: #000;
 }
 h2 {
-	font-size: .85rem;
+	font-size: .9rem;
 	font-weight: bold;
 	text-transform: uppercase;
-	color: #868484;
+	color: #f94040;
 }
 #page_content {
 	margin-top: 2rem;
 }
+
+#coverstory {
+	border: 1px dotted #666666;
+	padding: 1rem;
+	margin-right: 1.2rem;
+}
 #coverstory a {
-	font-size: 1.2rem;}
+	font-size: 1.2rem;
+}
+
 #topstories {
 	padding-top: .5rem;
 }
 #topstories a {
 	font-size: 1rem;
 }
-#archive a {
-	font-size: 1rem;
+
+#frontpage-archive {
+	margin-top: 1.5rem;
 }
+
 #instructions {
 	color: #000;
 }
@@ -36,6 +46,9 @@ h2 {
 }
 #instructions ol li.instructable {
 	padding-bottom: 1.5rem;
+}
+#instructions ul li.instructable-ac {
+	padding-bottom: .75rem;
 }
 #instructions ol h1 {
 	font-size: 1.1rem;
@@ -48,4 +61,15 @@ h2 {
 }
 #instructions ol h3{
 	font-size: .9rem;
+}
+#instructions h2.card-title {
+	font-size: .9rem;
+	color: #000000;
+}
+#instructions h1.card-title {
+	font-size: 1.3rem;
+	margin-bottom: 0;
+}
+#instructions .card {
+	margin-top: 2rem;
 }

@@ -2,25 +2,28 @@
 
 {% block page_content %}
 	<div id="instructions">
-		<div class="row">
-			<h1>Instructions</h1>
-			<p>For each user story below, submit a pull request to this repository that completes the request, meeting as many of the acceptance criteria as you can. For each acceptance criteria, a django test is noted which should pass if your solution is valid.<p>
+		<div class="container">
+			<div class="row">
+				<h1>Code Exercise Instructions</h1>
+				<p>For each ticket below, submit a pull request to this repository that completes the request, meeting as many of the acceptance criteria as you can. For each acceptance criteria, a django test is noted which should pass if your solution is valid.<p>
 
-			</p>For each pull request, include instructions for the reviewer to verify the behavior as well as commentary about your solutions.</p>
+				</p>For each pull request, include instructions for the reviewer to verify the behavior as well as commentary about your solutions.</p>
+			</div>
 		</div>
-		<ol>
 			{% for user_story in user_stories %}
-			<li class="instructable">
-				<h1>{{user_story.title}}</h1>
-				<h2>{{user_story.description}}</h2>
-				<h3>Acceptance Criteria:</h3>
-				<ul>
-				{% for ac in user_story.acceptancecriteria_set.all %}
-					<li class="instructable-ac">{{ac.ac|safe}}</li>
-				{% endfor %}
-				</ul>
-			</li>
+			<div class="card">
+  				<div class="card-header"><h1 class="card-title">{{user_story.title}}</h1></div>
+  				<div class="card-body">
+	  				<p class="card-text">{{user_story.description}}</p>
+	  				<h2 class="card-title">Acceptance Criteria:</h2>
+						<ul>
+						{% for ac in user_story.acceptancecriteria_set.all %}
+							<li class="instructable-ac">{{ac.ac|safe}}</li>
+						{% endfor %}
+						</ul>
+					</li>
+	  			</div>
+  			</div>
 			{% endfor %}
-		</ol>
 	</div>
 {% endblock %}

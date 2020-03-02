@@ -34,6 +34,8 @@ class TestBase(TestCase):
 class NewsPostViewTest(TestBase):
 
     def test_article_unique_urls(self):
+        """ Verify that each article has a unique URL accessed via NewsPost.url
+        """
         articles = NewsPost.objects.all()
         unique_article_urls = []
         for article in articles:
@@ -41,6 +43,8 @@ class NewsPostViewTest(TestBase):
             unique_article_urls.append(article.url)
 
     def test_article_page_content(self):
+        """ Very that each article rendered at its unique URL displays the correct content
+        """
         articles = NewsPost.objects.all()
         for article in articles:
             page = self.client.get(article.url)
@@ -51,6 +55,8 @@ class NewsPostViewTest(TestBase):
             self.assertEqual(self._clean_text(rendered_body), self._clean_text(article.body))
 
     def test_article_body_render(self):
+        """ Verify that articles rendered at their URL do not display raw HTML to the screen
+        """
         articles = NewsPost.objects.all()
         for article in articles:
             page = self.client.get(article.url)
@@ -58,6 +64,8 @@ class NewsPostViewTest(TestBase):
             self.assertNotIn('<p>', page_html.text)
 
     def test_visitor_not_sees_edit_link(self):
+        """ Verify that a visitor (non-logged in CMS user) cannot see the "edit" link on article pages
+        """
         articles = NewsPost.objects.all()
         for article in articles:
             page = self.client.get(article.url)
@@ -66,6 +74,8 @@ class NewsPostViewTest(TestBase):
             self.assertIsNone(edit_link)
 
     def test_cms_user_sees_edit_link(self):
+        """ Verify that a logged in CMS user sees the edit link on article pages and that it links to the correct change form
+        """
         self._login_user()
         articles = NewsPost.objects.all()
         for article in articles:
@@ -79,6 +89,8 @@ class NewsPostViewTest(TestBase):
 class FrontpageViewTest(TestBase):
 
     def test_top_stories(self):
+        """ Verify that the top stories section contains the 3 most recent stories, excluding the cover story
+        """
         latest_four_stories = NewsPost.objects.all().order_by('publish_date')[:4]
         cover_story = latest_four_stories[2]
         cover_story.is_cover_story = True
@@ -117,6 +129,8 @@ class FrontpageViewTest(TestBase):
         self.assertEqual(top_story_3_id, top_stories[2].pk)
 
     def test_archive_stories(self):
+        """ Verify that the archived stories section contains all articles that are not the cover story or top stories
+        """
         all_stories = NewsPost.objects.all().order_by('publish_date')
         cover_story = all_stories[7]
         cover_story.is_cover_story = True
@@ -137,6 +151,8 @@ class FrontpageViewTest(TestBase):
             self.assertIn(story_id, [s.id for s in archive_stories])
 
     def test_article_teaser_render(self):
+        """ Verify that the teasers on the front page do not contain raw HTML printed to the screen
+        """
         front_page = self.client.get('')
         front_page_html = BeautifulSoup(front_page.content, 'html.parser')
         teaser_divs = front_page_html.find_all('div', {'class': 'article-teaser'})
@@ -157,6 +173,8 @@ class CmsTest(TestBase):
         return admin_rows
 
     def test_title_shows_on_list_page(self):
+        """ Verify that CMS users can identify articles on the changelist page by seeing the article titles
+        """
         admin_rows = self._get_news_list_page_rows()
         for row in admin_rows:
             resolved_admin_url = resolve(row.find('a')['href'])
@@ -165,6 +183,8 @@ class CmsTest(TestBase):
             self.assertIn(newspost.title, row.text)
 
     def test_pubdate_shows_on_list_page(self):
+        """ Verify that CMS users can identify articles on the changelist page by seeing the article publish dates
+        """
         admin_rows = self._get_news_list_page_rows()
         for row in admin_rows:
             resolved_admin_url = resolve(row.find('a')['href'])
@@ -174,6 +194,8 @@ class CmsTest(TestBase):
             self.assertIn('{}'.format(display_pub_date), row.text)
 
     def test_displayed_in_order(self):
+        """ Verify that CMS users see articles on the changelist page ordered by most recent first
+        """
         admin_rows = self._get_news_list_page_rows()
         last_pubdate = None
         for row in admin_rows:
@@ -185,6 +207,8 @@ class CmsTest(TestBase):
             last_pubdate = newspost.publish_date
 
     def test_only_one_cover_story(self):
+        """ Verify that when a CMS user sets an article as the cover story, the previously saved cover story is set False
+        """
         self._login_user()
         articles = NewsPost.objects.all()
 
