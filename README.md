@@ -1,9 +1,14 @@
-# divesite - Industry Dive's Django based Website Engine and Newsletter CMS
+# Wavepool
+Industry Dive's django code exercise for software engineer candidates
 
 ## Requirements
 * Python 3*
 * Pipenv or similar
 
-## Install
+## Install & run
+Using pipenv:
 
-tk
+`pipenv install`
+`pipenv shell`
+`pip install -r reqs.txt`
+`python manage.py runserver`
